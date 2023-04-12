@@ -9,5 +9,7 @@ public class Main {
         } else {
             System.out.println("Не равны");
         }
+        System.out.println(address.hashCode());
+        System.out.println(address1.hashCode());
     }
 }
