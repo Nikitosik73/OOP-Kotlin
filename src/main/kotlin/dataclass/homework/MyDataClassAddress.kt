@@ -22,22 +22,17 @@ class MyDataClassAddress(
     }
 
     override fun equals(other: Any?): Boolean {
+        // проверяем ссылки
         if (this === other) return true
-        if (javaClass != other?.javaClass) return false
+        // проверяем объекты
+        if (hashCode() != other.hashCode()) return false
 
         other as MyDataClassAddress
 
-        if (nameCity != other.nameCity) return false
-        if (streetName != other.streetName) return false
-        if (numberOfHouse != other.numberOfHouse) return false
-
-        return true
+        return !(nameCity != other.nameCity && streetName != other.streetName && numberOfHouse != other.numberOfHouse)
     }
 
     override fun hashCode(): Int {
-        var result = nameCity.hashCode()
-        result = 31 * result + streetName.hashCode()
-        result = 31 * result + numberOfHouse.hashCode()
-        return result
+        return nameCity.hashCode() + streetName.hashCode() + numberOfHouse.hashCode()
     }
 }
